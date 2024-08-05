@@ -12,6 +12,7 @@ public class WelcomePage extends Tools {
     }
 
     private void welcomeMessage() {
+        stringSeparator();
         System.out.println("Welcome to BookStore!");
         System.out.println("Please choose a option from below:");
         System.out.println("1. Continue as a guest");

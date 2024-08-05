@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class DatabaseConnection {
 
-    Connection conn = null;
+    public Connection conn = null;
 
     public DatabaseConnection() {
         try {
@@ -22,7 +22,7 @@ public class DatabaseConnection {
             conn = DriverManager.getConnection(DB_URL, props);
 
             //Connection test
-            System.out.println("Connection successful!");
+            //System.out.println("Connection successful!");
 
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());

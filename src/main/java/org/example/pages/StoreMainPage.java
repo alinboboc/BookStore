@@ -12,6 +12,7 @@ public class StoreMainPage extends Tools {
     }
 
     private void StoreMainPageWelcomeMessage() {
+        stringSeparator();
         System.out.println("Welcome to BookStore!");
         System.out.println("Please choose a option from below:");
         System.out.println("1. Search by book title");
@@ -28,7 +29,6 @@ public class StoreMainPage extends Tools {
     private void userChoice() {
         String userInput = sc.nextLine();
         userInput = inputClean(userInput);
-
         switch (userInput) {
             case "1":
                 new ByBookTitle();
