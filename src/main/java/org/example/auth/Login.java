@@ -9,18 +9,20 @@ import java.sql.SQLException;
 
 public class Login extends Tools {
 
+    private int maxPasswordInputs = 3;
+    String userInput = sc.nextLine();
+
     public Login() {
         stringSeparator();
         System.out.println("You chose to login into your account.");
         System.out.println("Please enter your username:");
-        String inputUser = sc.nextLine();
         try {
             new DatabaseConnection();
             setQuery("SELECT * FROM users");
             setStmt(conn.prepareStatement(getQuery()));
             setRs(getStmt().executeQuery());
             while (getRs().next()) {
-                usernameCheck(inputUser);
+                usernameCheck(userInput);
             }
         } catch (SQLException ex) {
             System.out.println("-----SQL_ERROR-----");
@@ -32,15 +34,13 @@ public class Login extends Tools {
 
     private void usernameCheck(String inputUser) throws SQLException {
         String username = getRs().getString("username");
-        if (username.equals(inputUser)) {
+        if (isRegisterUsernameValid(userInput)) {
             passwordCheck();
         } else {
             System.out.println("The username you provided is not registered, you will be redirected to the welcome page.");
             new WelcomePage();
         }
     }
-
-    int maxPasswordInputs = 3;
 
     private void passwordCheck() throws SQLException {
         if (maxPasswordInputs == 0) {

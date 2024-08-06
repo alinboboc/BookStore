@@ -3,9 +3,11 @@ package org.example.pages;
 import org.example.tools.Tools;
 import org.example.func.*;
 
+import java.sql.SQLException;
+
 public class StoreMainPage extends Tools {
 
-    public StoreMainPage() {
+    public StoreMainPage() throws SQLException {
         setUserLoggedIn(false);
         StoreMainPageWelcomeMessage();
         userChoice();
@@ -26,7 +28,7 @@ public class StoreMainPage extends Tools {
         System.out.println("9. Back");
     }
 
-    private void userChoice() {
+    private void userChoice() throws SQLException {
         String userInput = sc.nextLine();
         userInput = inputClean(userInput);
         switch (userInput) {
