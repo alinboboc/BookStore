@@ -4,9 +4,11 @@ import org.example.auth.Login;
 import org.example.auth.Register;
 import org.example.tools.Tools;
 
+import java.sql.SQLException;
+
 public class WelcomePage extends Tools {
 
-    public WelcomePage() {
+    public WelcomePage() throws SQLException {
         welcomeMessage();
         userChoice();
     }
@@ -21,7 +23,7 @@ public class WelcomePage extends Tools {
         System.out.println("4. Leave the store");
     }
 
-    private void userChoice() {
+    private void userChoice() throws SQLException {
         String userInput = sc.nextLine();
         userInput = inputClean(userInput);
 
