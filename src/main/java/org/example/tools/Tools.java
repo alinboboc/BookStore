@@ -89,6 +89,25 @@ public class Tools extends DatabaseConnection {
         return matcher.matches();
     }
 
+    public boolean isNameValid(String userInput) {
+        String regex = "^[a-zA-Z'-]+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(userInput);
+        return matcher.matches();
+    }
+
+    public boolean isPersonalIDValid(String userInput) {
+        final int ROM_ID_LENGTH = 13;
+        String regex = "^\\d+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(userInput);
+        if (userInput.length() < ROM_ID_LENGTH) {
+            return false;
+        } else {
+            return matcher.matches();
+        }
+    }
+
     //DEFAULT MESSAGES
     public void returnSQLMessage(SQLException ex) {
         System.out.println("-----SQL_ERROR-----");
